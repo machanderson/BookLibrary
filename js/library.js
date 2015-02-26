@@ -1,0 +1,1 @@
+angular.module("library", ["firebase", "ui.router"])
