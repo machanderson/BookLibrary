@@ -14,6 +14,34 @@
 	            </div>
 	        </form>
 	    </div>
+        <div  class="panel panel-default col-md-4" style="margin-left: 20px;">
+				<table class="table table-hover">
+					<thead>
+					  <tr>
+					    <th>Nazwa</th>
+					    <th>Opis</th>
+					    <th>Imię</th>
+					    <th>Nazwisko</th>
+					    <th>Edytuj</th>
+					    <th>Usun</th>					    					    
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr ng-repeat="(id,category) in bookCategories">
+					    <td ng-hide="editBookCategory(id)">{{category.name}}</td>
+					    <td ng-hide="editBookCategory(id)">{{category.description}}</td>
+					    <td ng-hide="editBookCategory(id)">{{category.person.name}}</td>
+					    <td ng-hide="editBookCategory(id)">{{category.person.surname}}</td>
+					    <td ng-show="editBookCategory(id)"><input type="text" class="form-control" ng-model="category.name"/></td>
+					    <td ng-show="editBookCategory(id)"><input type="text" class="form-control" ng-model="category.description"/></td>
+					    <td ng-show="editBookCategory(id)"><input type="text" class="form-control" ng-model="category.person.name"/></td>
+					    <td ng-show="editBookCategory(id)"><input type="text" class="form-control" ng-model="category.person.surname"/></td>					    
+					    <td><input type="submit" class="btn btn-default" value="" ng-click="updateBookCategory(id)" /></td>
+					    <td><input type="submit" class="btn btn-default" value="" ng-click="removeBookCategory(id)" /></td>
+					  </tr>
+					</tbody>
+				</table>
+        </div>
    </div>	
 </div>
    
