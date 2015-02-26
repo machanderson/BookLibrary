@@ -21,4 +21,18 @@ angular.module("library")
         $scope.removeBookCategory = function(id) { 
             LibraryService.removeBookCategory(id);
         }
+        
+        $scope.updateBookCategory = function(id) { 
+        	if($scope.editCategoryId != null) {      	
+            	LibraryService.updateBookCategory(id); 
+            	if($scope.editCategoryId == id) {
+            		$scope.editCategoryId = null;	
+            	} else {
+            		$scope.editCategoryId = id;
+            	}
+            	
+            } else {
+            	$scope.editCategoryId = id;
+            }
+        }
     });
