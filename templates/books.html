@@ -1,0 +1,51 @@
+<div ng-cloak>
+	<div  class="row" style="padding-left: 20px;">
+		<div ng-repeat="(categoryId,bookCategory) in bookCategories" class="panel panel-default col-md-9" >
+	        <form ng-submit="addBookToCategory(bookCategory, newBook[categoryId])">
+	            <div class="form-group">
+	            	<h3>{{bookCategory.name}}:</h3>
+	                <label for="bookTitle">Tytuł:</label>
+	            	<input type="text" id="bookTitle" class="form-control" ng-model="newBook[categoryId].title" style="width: 180px" />
+	                <label for="bookAuthor">Autor:</label>
+	                <input type="text" id="bookAuthor" class="form-control" ng-model="newBook[categoryId].author" style="width: 180px" />
+	                <label for="bookDesription">Krótki opis:</label>
+	                <textarea class="form-control" rows="5" id="bookDesription" ng-model="newBook[categoryId].description" style="width: 250px"></textarea>
+	                <label for="responsiblePerson">Rok wydania:</label>
+	            	<input type="text" id="releaseYear" class="form-control" ng-model="newBook[categoryId].releaseYear" style="width: 180px" />
+	            	<label for="responsiblePerson">Wydawnictwo:</label>
+	            	<input type="text" id="publishingHouse" class="form-control" ng-model="newBook[categoryId].publishingHouse" style="width: 180px" />
+	            	<input type="submit" class="btn btn-default" value="Dodaj" />
+	            </div>
+	        </form>
+			<table class="table table-hover">
+				<thead>
+				  <tr>
+				    <th>Tytuł</th>
+				    <th>Autor</th>
+				    <th>Krótki opis</th>
+				    <th>Rok wydania</th>
+				    <th>Wydawnictwo</th>
+				    <th>Edytuj/Usun</th>				    					    
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="(id,book) in bookCategory.books">
+				    <td ng-hide="editBook(categoryId,id)">{{book.title}}</td>
+				    <td ng-hide="editBook(categoryId,id)">{{book.author}}</td>
+				    <td ng-hide="editBook(categoryId,id)">{{book.description}}</td>
+				    <td ng-hide="editBook(categoryId,id)">{{book.releaseYear}}</td>
+				    <td ng-hide="editBook(categoryId,id)">{{book.publishingHouse}}</td>
+				    <td ng-show="editBook(categoryId,id)"><input type="text" class="form-control" ng-model="book.title"/></td>
+				    <td ng-show="editBook(categoryId,id)"><input type="text" class="form-control" ng-model="book.author"/></td>
+				    <td ng-show="editBook(categoryId,id)"><input type="text" class="form-control" ng-model="book.description"/></td>
+				    <td ng-show="editBook(categoryId,id)"><input type="text" class="form-control" ng-model="book.releaseYear"/></td>	
+				    <td ng-show="editBook(categoryId,id)"><input type="text" class="form-control" ng-model="book.publishingHouse"/></td>				    
+				    <td><input type="submit" class="btn btn-default" value="" ng-click="updateBook(categoryId,id)"/> 
+				    	<input type="submit" class="btn btn-default" value="" ng-click="removeBook(categoryId,id)"</td>
+				    </td>
+				  </tr>
+				</tbody>
+			</table>
+        </div>
+   </div>	
+</div>

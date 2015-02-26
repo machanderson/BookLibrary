@@ -4,11 +4,6 @@ angular.module("library", ["firebase", "ui.router"])
     
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('book', {
-                url: '/book',
-                templateUrl: 'templates/book.html',
-                controller: 'bookCtrl'
-        })
             .state('books', {
                 url: '/books',
                 templateUrl: 'templates/books.html',
