@@ -1,7 +1,8 @@
 angular.module("library", ["firebase", "ui.router"])
-.constant('FIREBASE_URL','https://booklibrary.firebaseio.com')
-   
-   .config(function($stateProvider, $urlRouterProvider) {
+    .constant('FIREBASE_URL','https://booklibrary.firebaseio.com')
+    
+    
+    .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('book', {
                 url: '/book',
@@ -20,11 +21,12 @@ angular.module("library", ["firebase", "ui.router"])
         })            
   $urlRouterProvider.otherwise('/books');
 })
+
     
     .factory('LibraryService', function($firebase, FIREBASE_URL){
         var ref = new Firebase(FIREBASE_URL + "/categories");
         var sync = $firebase(ref);
-        var booksCategories = sync.$asArray()
+        var booksCategories = sync.$asArray();
         
         var getBooksCategories = function() {
             return booksCategories;
@@ -32,19 +34,20 @@ angular.module("library", ["firebase", "ui.router"])
         
         var addBookCategory = function(category) {
             booksCategories.$add(category);
-        }
+        };
         
         var removeBookCategory = function(id) {
             booksCategories.$remove(id);
-        }
+        };
         
         var updateBookCategory = function(id) {
             booksCategories.$save(id);
-        }
+        };
         return {
             getBooksCategories: getBooksCategories,
             addBookCategory: addBookCategory,
             removeBookCategory: removeBookCategory,
             updateBookCategory: updateBookCategory
-        }
-    })
+        };
+    });
+
