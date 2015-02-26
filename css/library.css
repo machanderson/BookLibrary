@@ -1,0 +1,10 @@
+#main_container {
+	min-height: 1024px;
+	width:100%;
+}
+
+#center_panel {
+	min-height: 1024px;
+	width: 100%;
+	background-image: url("../img/body.png");
+}
